@@ -46,24 +46,32 @@ const navigator=useNavigate()
             {/* {error && <div className="error">{error}</div>} */}
     
             <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-              />
-            </div>
-    
-            <div className="form-group">
-              <label>Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-              />
-            </div>
+        <label>Email</label>
+        <div className="input-icon">
+          <i className="fas fa-envelope"></i>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+      </div>
+
+      <div className="form-group">
+        <label>Password</label>
+        <div className="input-icon">
+          <i className="fas fa-lock"></i>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+      </div>
     
             <button type="submit" onClick={()=>navigator('/profile')}>Login</button>
             {/* <button className="submit-btn" onClick={()=>logout()}>log out</button> */}

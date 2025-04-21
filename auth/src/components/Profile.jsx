@@ -1,6 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
 import { useEffect, useState } from "react";
+import './Profile.css'
 
 function Profile() {
     const [userDetails, setUserDetails] = useState(null);
@@ -32,30 +33,34 @@ function Profile() {
       }
     }
     return (
-      <div>
-        {userDetails ? (
-          <>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <img
-                src={userDetails.photo}
-                width={"40%"}
-                style={{ borderRadius: "50%" }}
-              />
-            </div>
-            <h3>Welcome {userDetails.firstName} 🙏🙏</h3>
-            <div>
-              <p>Email: {userDetails.email}</p>
-              <p>First Name: {userDetails.fullName}</p>
-              {/* <p>Last Name: {userDetails.lastName}</p> */}
-            </div>
-            <button className="btn btn-primary" onClick={handleLogout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
+      <div className="profile-container">
+      {userDetails ? (
+        <div className="profile-card">
+          <div className="profile-image">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              alt="Profile"
+              className="avatar"
+            />
+          </div>
+
+          <h3 className="welcome-text">
+            Welcome, {userDetails.firstName} 🙏
+          </h3>
+
+          <div className="profile-details">
+            <p><i className="fas fa-envelope"></i> {userDetails.email}</p>
+            <p><i className="fas fa-user"></i> {userDetails.fullName}</p>
+          </div>
+
+          <button className="logout-btn" onClick={handleLogout}>
+            <i className="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      ) : (
+        <p className="loading">Loading...</p>
+      )}
+    </div>
     );
   }
   export default Profile;
